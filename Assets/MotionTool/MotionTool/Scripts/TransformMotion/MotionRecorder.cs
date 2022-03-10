@@ -3,27 +3,33 @@ using System.Collections.Generic;
 
 public class MotionRecorder : MonoBehaviour
 {
-  public Transform customOrigin;
-  public MotionData motionData;
-  public Transform[] nodes = new Transform[0];
-  public bool pause;
-
-  public float startTimeOffset { get; set; } = 0f;
-
-  private float currentTime;
+    public Transform customOrigin;
+    public MotionData motionData;
+    public Transform[] nodes = new Transform[0];
+    public bool pause;
+    // Initialise variables to store hand GameObjects
+    public GameObject leftHand;
+    public GameObject rightHand;
+    public GameObject headsetPos;
+    
+    public float startTimeOffset { get; set; } = 0f;
+    private float currentTime;
 
   void Update()
   {
-    if (pause)
-      return;
-
-    RecordFrame(currentTime);
-    currentTime += Time.deltaTime;
+        if (pause)
+        {
+            return;
+        }
+        
+        RecordFrame(currentTime);
+        currentTime += Time.deltaTime;
   }
 
   void OnEnable()
   {
-    StartRecording();
+        SetNodesFromChildren(); // Initialises node transforms when the script is enabled.
+        StartRecording();
   }
 
   void OnDisable()
@@ -42,11 +48,16 @@ public class MotionRecorder : MonoBehaviour
 
   public void SetNodesFromChildren()
   {
-    List<Transform> children = new List<Transform>();
-    GetComponentsInChildren(children);
-    children.Remove(transform);
-
-    nodes = children.ToArray();
+        // Searches for "Bones" children which contain the bone transforms for each hand (via Oculus Integration plugin)
+        List<Transform> children = new List<Transform>();
+        leftHand.transform.Find("Bones").GetComponentsInChildren(children);     //stores left hand bones in 'children' list.
+        List<Transform> rightBones = new List<Transform>();
+        rightHand.transform.Find("Bones").GetComponentsInChildren(rightBones);
+        children.AddRange(rightBones);                                          //appends right hand bone transforms to end of 'children' list.
+        children.Add(headsetPos.transform);
+        children.Remove(transform);
+        
+        nodes = children.ToArray();
   }
 
   private void StartRecording()
