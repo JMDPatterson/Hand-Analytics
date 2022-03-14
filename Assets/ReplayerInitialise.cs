@@ -14,8 +14,6 @@ public class ReplayerInitialise : MonoBehaviour
     IEnumerator LateStart(float waitTime)
     {
         yield return new WaitForSeconds(3);
-        //recorder.customOrigin = startPos;
-        //customOrigin.transform = ((MotionRecorder)gameObject.GetComponent<MotionRecorder>()).customOrigin;
         customRepOrigin.transform.position = GameObject.Find("CenterEyeAnchor").transform.position;
         Vector3 pos = customRepOrigin.transform.position;
         pos.y = 0;

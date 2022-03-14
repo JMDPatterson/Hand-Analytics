@@ -20,7 +20,7 @@ public class RecorderInitialise : MonoBehaviour
         Vector3 pos = customRecOrigin.transform.position;
         pos.y = 0;
         customRecOrigin.transform.position = pos;
-        ((MotionRecorder)gameObject.GetComponent<MotionRecorder>()).customOrigin = customRecOrigin;
+        //((MotionRecorder)gameObject.GetComponent<MotionRecorder>()).customOrigin = customRecOrigin;
         ((MotionRecorder)gameObject.GetComponent<MotionRecorder>()).enabled = true;
     }  
 }
