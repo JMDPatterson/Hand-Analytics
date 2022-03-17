@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Oculus/SampleFramework/Usage/Passthrough/Scenes/PassthroughHands.unity
     guid: c94e480e4a6da614693c0cd3372e2d2d
   - enabled: 1
-    path: Assets/Scenes/UnderlayHandsPassthroughDemo.unity
+    path: Assets/Scenes/CoffeeStationAnalysis.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fa474783e430740418407c432e2c76ac, type: 2}
