@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c5c4220c27e19478a5fb51d0f4ad05, type: 3}
   m_Name: BallController
   m_EditorClassIdentifier: 
-  startTime: 19.71215
+  startTime: 0
   fps: 30
   nodeNames:
   - Bones
